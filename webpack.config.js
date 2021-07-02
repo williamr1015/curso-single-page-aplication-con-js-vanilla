@@ -1,37 +1,28 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const { resolve } = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+//prueba con nuevo archivo webpack.config.co//
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
-    },
-    resolve: {
-        extensions: ['.js']
-    },
+    entry: "./src/App.js",
     module: {
         rules: [{
-            test: /\.js?$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-            }
-        }]
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [{
+                    loader: "url-loader",
+                    options: {
+                        limit: 8192,
+                    },
+                }, ],
+            },
+        ],
     },
+
     plugins: [
         new HtmlWebpackPlugin({
-            inject: true,
-            template: './public/index.html',
-            filename: './index.html',
+            template: "./public/index.html",
         }),
-        new CopyWebpackPlugin({
-            patterns: [{
-                from: './src/styles/styles.css',
-                to: ''
-            }]
-        }),
-    ]
-}
+    ],
+};
