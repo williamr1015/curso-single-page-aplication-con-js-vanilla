@@ -3,16 +3,26 @@ cache:
   directories:
     - ~/.npm
 node_js:
+<<<<<<< HEAD
   - "12"
 git:
   depth: 3
 script:
+=======
+  - '16'
+git:
+  depth: 3
+>>>>>>> parent of 18944e3 (elimino archivo travis.yml)
   - yarn build
 deploy:
   provider: pages
   edge: true
   skip-cleanup: true
+<<<<<<< HEAD
   keep-history: true
+=======
+  keep_history: true
+>>>>>>> parent of 18944e3 (elimino archivo travis.yml)
   github-token: $GITHUB_TOKEN
   local-dir: dist/
   target-branch: gh-pages
